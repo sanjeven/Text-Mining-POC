@@ -1,0 +1,82 @@
+=MID(A1,FIND(">",A1)+1,FIND("<",A1,4)-FIND(">",A1)-1)
+
+=MID(B39,FIND("title=""",B39)+7,FIND(""">",B39,4)-FIND("title=""",B39)-7)
+
+
+For Name:
+=IFERROR((MID(A1,FIND("title=""",A1)+7,FIND(""">",A1,4)-FIND("title=""",A1)-7)),(MID(A1,FIND(">",A1)+1,FIND("<",A1,4)-FIND(">",A1)-1)))
+
+For Book:
+=IFERROR((MID(B1,FIND("title=""",B1)+7,FIND(""">",B1,4)-FIND("title=""",B1)-7)),(MID(B1,FIND(">",B1)+1,FIND("<",B1,4)-FIND(">",B1)-1)))
+
+=IFERROR((MID(A1,FIND(\"title=\"\"\",A1)+7,FIND(\"\"\">\",A1,4)-FIND(\"title=\"\"\",A1)-7)),(MID(A1,FIND(\">\",A1)+1,FIND(\"<\",A1,4)-FIND(\">\",A1)-1)))
+
+For person link:
+="https://en.m.wikipedia.org/"&IFERROR((MID(A1,FIND("href=""",A1)+7,FIND(""">",A1,4)-FIND("title=""",A1)-2)),(MID(A1,FIND(">",A1)+1,FIND("<",A1,4)-FIND(">",A1)-1)))
+
+
+
+Sub MacroNew()
+'
+' MacroNew Macro
+'
+
+'
+    Columns("C:D").Select
+    Range("C58").Activate
+    Selection.Copy
+    Columns("E:F").Select
+    Range("E58").Activate
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Columns("A:D").Select
+    Range("D58").Activate
+    Application.CutCopyMode = False
+    Selection.Delete Shift:=xlToLeft
+End Sub
+
+
+
+Sub Macro2()
+'
+' Macro2 Macro
+'
+
+'
+    
+    
+    Columns("C:D").Select
+    Selection.Copy
+    Columns("E:F").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Columns("A:D").Select
+    Range("D1").Activate
+    Application.CutCopyMode = False
+    Selection.Delete Shift:=xlToLeft
+    
+    Dim FoundCell As Range
+    Application.ScreenUpdating = False
+    Set FoundCell = Range("A:B").Find(what:="#VALUE!")
+    Do Until FoundCell Is Nothing
+    FoundCell.EntireRow.Delete
+    Set FoundCell = Range("A:B").FindNext
+    Loop
+    
+    On Error Resume Next
+    Columns("A").SpecialCells(xlCellTypeBlanks).EntireRow.Delete
+    On Error Resume Next
+    Columns("B").SpecialCells(xlCellTypeBlanks).EntireRow.Delete
+    
+    
+    
+    ActiveWorkbook.Save
+    
+   
+End Sub
+
+Title, Author, Author’s Nationality, Date
+
+And then if possible, add in the genre also
+
+=IF(C1="none",D1,C1)
