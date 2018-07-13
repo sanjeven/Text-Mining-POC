@@ -15,7 +15,7 @@ This POC uses python and excel to collect data from wiki like sites for further 
 <br>
 <b>How to Run</b><br>
 <i>python *scriptname* -s *start year* -e *end year*</i>
-<br>
+<br></br>
 <ul>
 <li type = "square">The excel macro combines 2 columns together as wiki's html is not standardised which meant mining had to be done for 2 criterias.</li>
 <li type = "square">To run the script without the excel macro, simply comment out server.run_author_macro()</li>
