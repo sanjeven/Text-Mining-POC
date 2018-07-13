@@ -19,5 +19,5 @@ This POC uses python and excel to collect data from wiki like sites for further 
 <ul>
 <li type = "square">The excel macro combines 2 columns together as wiki's html is not standardised which meant mining had to be done for 2 criterias.</li>
 <li type = "square">To run the script without the excel macro, simply comment out server.run_author_macro()</li>
-<li type = "square">*question marks* that appear inthe excel document are caused by special characters that are not able to be captured using the encoding method (not yet fixed)</li>
+<li type = "square">*question marks* that appear in the excel document are caused by special characters that are not able to be captured using the encoding method (not yet fixed)</li>
 </ul>
