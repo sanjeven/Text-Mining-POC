@@ -14,6 +14,7 @@ This POC uses python and excel to collect data from wiki like sites for further 
  </ul>
 <br>
 <b>How to Run</b><br>
+<i>Copy Book1.xlsb to documents. This excel documenet contains the macro to combine birth place.</i>
 <i>python *scriptname* -s *start year* -e *end year*</i>
 <br></br>
 <ul>
